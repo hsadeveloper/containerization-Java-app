@@ -4,11 +4,11 @@
 
 ### History of Containerization
 
-The concept of containerization is not new and was proposed in the 1970s. The initial idea of containerization was to isolate code applications on the Unix operating system. The 2000s were recognized as a turning point in container technology. In 2003, Google released Borg, a container cluster management system, which relied on the isolation mechanisms that Linux already had.Around 2012, several Linux distributions introduced more deployment choices and management tools, significantly improving the usability of containers. In 2008, LXC (Linux Containers) was released, providing a container implementation based on cgroups and namespaces. In 2013, Docker was founded as a containerization platform based on Linux. The following year, in 2014, Google created the Kubernetes project as an open-source container orchestrator.[1]
+The concept of containerization is not new and was proposed in the 1970s. The initial idea of containerization was to isolate code applications on the Unix operating system. The 2000s were recognized as a turning point in container technology. In 2003, Google released Borg, a container cluster management system, which relied on the isolation mechanisms that Linux already had. Around 2012, several Linux distributions introduced more deployment choices and management tools, significantly improving the usability of containers. In 2008, LXC (Linux Containers) was released, providing a container implementation based on cgroups and namespaces. In 2013, Docker was founded as a containerization platform based on Linux. The following year, in 2014, Google created the Kubernetes project as an open-source container orchestrator.[1]
 
 
 
-### What is containerization technology 
+### What is Containerization Technology 
 
 Containerization is a software deployment process that combines an application's code with necessary files and libraries for running on various infrastructures, allowing for the creation of a single, scalable software package that runs on various devices and operating systems [2]. 
 
@@ -25,13 +25,13 @@ List of Top Key Players in Container Management Software Market:
     - RedHat OpenShift
     .....
 
-### Differences between containerization and virtualization?
+### Differences Between Containerization and Virtualization
 | Item              |Containerization   | Virtualization |
 | :---------------- | :------: | ----: |                 
-| Startup Time      |   Faster   |  much longer to boot up |
-| Operating system  | Shares the host operating system's kernel    |   Has its own kernel   |
+| Startup Time      |   Faster   |  Much longer to boot up |
+| Operating system  | Shares the host operating system's kernel   |   Has its own kernel   |
 | Resource usage    |  Uses fewer resources   | Uses more resources |
-| Use cases|  Good for portable and scalable applications|Good for isolated applications 
+| Use cases|  Good for portable and scalable applications| Good for isolated applications 
 
 Containers run on a shared OS kernel provided by the host operating system. This means that containers use the host’s operating system services,drivers, and kernel, which allows for efficient resource utilization. The shared components of the OS are read-only to prevent interference between containers. Consequently, containers demand fewer resources and have lower overhead compared to virtual machines. This efficiency allows significantly more containers to run on a single server. For instance, virtual machines may require gigabytes of storage each, while containers running similar programs may only need megabytes. [3]
 
@@ -57,9 +57,13 @@ Docker is a tool that makes it easy to package an application and all of its dep
 
 Docker client talks to the Docker daemon, which does the heavy lifting of building, running, and distributing your Docker containers. When you execute a docker run command to initiate a container, your Docker client interprets this command into an HTTP API call and forwards it to the Docker daemon. Subsequently, the Docker daemon processes the request, communicates with the underlying operating system, and facilitates the provisioning of your container.
 
-![alt text](./images/image-3.png)
 
-[image source](https://docs.docker.com/get-started/overview/)
+| ![Docker Daemon](./images/image-3.png) | 
+|:--:| 
+| *[image source](https://docs.docker.com/get-started/overview/)* |
+
+
+
 
     Ensure that the Docker daemon is up and active.
      by running `docker info`
@@ -79,7 +83,10 @@ Docker images are the foundation for running containers. It is a self-contained,
 
     To build an image, you'll need to use a Dockerfile as one option.
 ---
-![alt text](./images/image-4.png)
+
+| ![space-1.jpg](./images/image-4.png) | 
+|:--:| 
+| *Image Source - ByteByteToGo* |
 ---
 
 ### What 's Dockerfile?
