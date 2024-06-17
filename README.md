@@ -74,7 +74,7 @@ Docker images are the foundation for running containers. It is a self-contained,
 
 
 
-### Images contain two types of things :
+### Images Contain Two Types of Things :
 ---
 
 1 - A collection of layers that are combined to form the filesystem that will be seen within the container.
