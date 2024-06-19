@@ -1,11 +1,8 @@
-
-## Docerize Java Application Brick-by-Brick
-
-
 ### History of Containerization
 
-The concept of containerization is not new and was proposed in the 1970s. The initial idea of containerization was to isolate code applications on the Unix operating system. The 2000s were recognized as a turning point in container technology. In 2003, Google released Borg, a container cluster management system, which relied on the isolation mechanisms that Linux already had. Around 2012, several Linux distributions introduced more deployment choices and management tools, significantly improving the usability of containers. In 2008, LXC (Linux Containers) was released, providing a container implementation based on cgroups and namespaces. In 2013, Docker was founded as a containerization platform based on Linux. The following year, in 2014, Google created the Kubernetes project as an open-source container orchestrator.[1]
+The initial concepts of containerization originated when developers faced challenges in application management. Security was at the top of their list of challenges. In a typical scenario, one Linux system server might be used as a database service, with the file server and web server running on the same operating system. However, non-isolated applications are not considered to be the best practice. A successful attack on one service can compromise the other services. This non-isolated application approach puts the services at risk of cyber attacks by increasing the surface area for potential breaches.
 
+The chroot system call was first introduced in Unix V7 in 1979. When the application starts, it isolates itself to a specific directory on the filesystem and uses that directory as its apparent root directory. In 2002, the Linux kernel implemented the namespace feature, allowing an application to run in its own virtual environment without the overhead of virtualization. Enginee at Google created control groups "cgroups". This Linux feature merged into the Linux kernel around 2007. Linux Containers (LCX) was relased in 2008 .LXC is An operating-system-level virtualization technique that enables multiple isolated Linux containers to run on a single host, all sharing the same Linux kernel. LXC provided features included namespace and cgroups and other. In 2013, Docker was founded as a containerization platform based on Linux. The following year, in 2014, Google created the Kubernetes project as an open-source container orchestrator.[1]
 
 
 ### What is Containerization Technology 
@@ -53,7 +50,7 @@ Containers run on a shared OS kernel provided by the host operating system. This
 
 ![alt text](./images/image6.png)
 
-Docker is a tool that makes it easy to package an application and all of its dependencies into a container. Docker container start fast and use less memory. It caches layers to make build faster.
+Docker is a framework for creating, depolying, and managing containers.Docker container start fast and use less memory. It caches layers to make build faster.
 
 Docker client talks to the Docker daemon, which does the heavy lifting of building, running, and distributing your Docker containers. When you execute a docker run command to initiate a container, your Docker client interprets this command into an HTTP API call and forwards it to the Docker daemon. Subsequently, the Docker daemon processes the request, communicates with the underlying operating system, and facilitates the provisioning of your container.
 
@@ -132,10 +129,12 @@ After understanding the foundation of containerization, Docker images, and Docke
 
 ### Docker Compose
 ---
-Docker Compose allows you to define and manage multi-container applications in a single YAML file.
-Verify docker-compose installed `docker-compose --version`
+Docker Compose allows you to define and manage multi-container applications in a single YAML file. It assists in interconnecting a set of containers and describes them in a succinct way.
+The `docker-compose`command can be used to buils, and start a set of containers.
+Compose version `3.x` is latest recommended for unlocking the most recent feature. 
 
-### Docker Compose attributes 
+
+### Docker Compose Attributes 
 
 - `version` refers to the Docker Compose version (latest is 3).
 - `services` defines the services that we need to run.
@@ -164,13 +163,6 @@ External Volumes: These bind mounts a file or directory from the host system dir
 #### Key Concepts
 - Target: The file or directory path inside the container where the volume data is mounted.
 - Source: The file or directory path on the host machine where the volume data is stored.
-
-        `volumes:
-            source: target ` 
-
-
-
-
 
 
 
