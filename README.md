@@ -46,7 +46,7 @@ Containers run on a shared OS kernel provided by the host operating system. This
 
   [Benefits of containerization - IBM](https://www.ibm.com/topics/containerization)
 
-## Docker
+### What's Docker?
 
 ![alt text](./images/image6.png)
 
@@ -68,7 +68,6 @@ Docker client talks to the Docker daemon, which does the heavy lifting of buildi
 ### What is Docker Image?
 
 Docker images are the foundation for running containers. It is a self-contained, immutable, lightweight package that contains all the necessary components to run software independently. Once created, it cannot be changed but they can be versioned for easy management.
-
 
 
 ### Images Contain Two Types of Things :
@@ -97,37 +96,39 @@ It is a running instance of a Docker image, offering a lightweight and isolated 
 
 After understanding the foundation of containerization, Docker images, and Dockerfiles, now it's time to see a real example
 
-## Let's Docerize  Java Projects with Gradle
+
+### Docker Volumes
+Docker volumes are used for:
+
+- Persisting container data.
+- Sharing data between containers.
+- Exposing data to the host system.
+- Docker supports two types of volumes: internal volumes and  external volumes.
+
+Internal Volumes: Managed entirely by Docker. They are stored in Docker’s managed storage areas and are not directly accessible or visible on the host filesystem.
+External Volumes: These bind mounts a file or directory from the host system directly into a container, allowing for direct access from both the host and the container.
+
+#### Key Concepts
+- Target: The file or directory path inside the container where the volume data is mounted.
+- Source: The file or directory path on the host machine where the volume data is stored.
 
 
----
+### Uploading Images
+To upload an image to public registry or JFrog Artifactory.
+- Authenticate 
+    Docker - docker login
+        - Username: myaccount
+        - Paswword: *******
+    Artifactory - 
+- Tag the image with the remote registry/ repository
+      > docker image tag <app_dev>   <myaccount>/<app_prod>:tag
+      - tag can be 1.0.0 or Latest
+- Push the image
+      > docker image push  <username>/<app_prod>
 
-- First you set up a Java project for Gradle to build.
-    - Run "gradle init"
-     - follow the prompt.
-
--  Build the project -  by running  `gradle build`
-
-        Build tasks include compiling classes, creating a JAR file, generating Javadoc, and publishing archives to a repository.
-
-- Locate the jar under `/build/libs/XXX.jar`. This only applies to Gradle projects. For Maven projects, look under the `/target/` folder for the JAR file
-
-- Create a Dockerfile to build an image
-    - Refer to the Dockerfile in the root directory of the project
-    >  docker build 
-
- -  Creating and starting a container
-   > docker run  --name app-name - d   XYZ 
-  - Listing containers 
-
-       ``` > docker ps```
-
-        -s show size
-        -q only print IDs
-
----
-
-### Docker Compose
+        
+    
+## Docker Compose
 ---
 Docker Compose allows you to define and manage multi-container applications in a single YAML file. It assists in interconnecting a set of containers and describes them in a succinct way.
 The `docker-compose`command can be used to buils, and start a set of containers.
@@ -146,23 +147,37 @@ Compose version `3.x` is latest recommended for unlocking the most recent featur
 - `ENV` sets the environment after the image is built.
 - `RUN` executes commands within the container at build time.
 - `EXPOSE` informs Docker that the built container listens on the specified network port at runtime.
- 
-     docker-compose.yaml in your project directory.
 
-### Docker Volumes
-Docker volumes are used for:
+## Docerize  Java Projects
+---
+For Java applications, JAR files can be built with the help of build tools such as Maven and Gradle. The Java JAR file can be moved into a Docker container and run inside it with a few Dockerfile instruction lines. Another approach is to move the Java application files inside the container, build them there, and then run the resulting JAR file.
 
-- Persisting container data.
-- Sharing data between containers.
-- Exposing data to the host system.
-- Docker supports two types of volumes: internal volumes and  external volumes.
+- Locate the jar under `/build/libs/XXX.jar`. This only applies to Gradle projects. For Maven projects, look under the `/target/` folder for the JAR file
 
-Internal Volumes: Managed entirely by Docker. They are stored in Docker’s managed storage areas and are not directly accessible or visible on the host filesystem.
-External Volumes: These bind mounts a file or directory from the host system directly into a container, allowing for direct access from both the host and the container.
+Build the project by running gradle build or mvn install depending on your build tool.
 
-#### Key Concepts
-- Target: The file or directory path inside the container where the volume data is mounted.
-- Source: The file or directory path on the host machine where the volume data is stored.
+Build tasks include compiling classes, creating a JAR file, generating Javadoc, and publishing archives to a repository.
+
+
+
+
+- Create a Dockerfile to build an image
+    - Refer to the Dockerfile in the root directory of the project
+    >  docker build 
+
+ -  Creating and starting a container
+   > docker run  --name app-name - d   XYZ 
+  - Listing containers 
+
+       ``` > docker ps```
+
+        -s show size
+        -q only print IDs
+
+---
+
+
+
 
 
 
